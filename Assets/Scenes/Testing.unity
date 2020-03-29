@@ -1109,9 +1109,12 @@ GameObject:
   m_Component:
   - component: {fileID: 39235909}
   - component: {fileID: 39235908}
+  - component: {fileID: 39235910}
+  - component: {fileID: 39235911}
+  - component: {fileID: 39235912}
   m_Layer: 0
   m_Name: Network_Client
-  m_TagString: Untagged
+  m_TagString: Client
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1129,10 +1132,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 8178011162586236115, guid: b6d41685f75390a45804eb06717d1c68, type: 3}
+  _remotePlayer: {fileID: 7233539423856002532, guid: 25aade76ac209a1b1989f92700af7e00, type: 3}
   _spawnPosition: {fileID: 511443629}
-  _camera: {fileID: 0}
+  _camera: {fileID: 1086139954}
   _maxSpawnDistance: 5
-  CurrentPlayer: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!4 &39235909
 Transform:
   m_ObjectHideFlags: 0
@@ -1147,6 +1151,103 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &39235910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39235907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClientConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientDataReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientError:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerDataReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerError:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+  port: 7777
+  NoDelay: 1
+  serverMaxMessageSize: 16384
+  clientMaxMessageSize: 16384
+--- !u!114 &39235911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39235907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de74f8f85a76e257b98a3eaff92f92e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  runInBackground: 1
+  startOnHeadless: 1
+  showDebugMessages: 0
+  serverTickRate: 30
+  offlineScene: 
+  onlineScene: 
+  transport: {fileID: 39235910}
+  networkAddress: localhost
+  maxConnections: 4
+  authenticator: {fileID: 0}
+  playerPrefab: {fileID: 0}
+  autoCreatePlayer: 0
+  playerSpawnMethod: 0
+  spawnPrefabs: []
+  <mode>k__BackingField: 0
+  finishStartHostPending: 0
+  clientSceneOperation: 0
+--- !u!114 &39235912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39235907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb8bf13c03e77d1cb244064395e26dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  runInBackground: 1
+  startOnHeadless: 1
+  showDebugMessages: 0
+  serverTickRate: 30
+  offlineScene: 
+  onlineScene: 
+  transport: {fileID: 39235910}
+  networkAddress: localhost
+  maxConnections: 4
+  authenticator: {fileID: 0}
+  playerPrefab: {fileID: 0}
+  autoCreatePlayer: 0
+  playerSpawnMethod: 0
+  spawnPrefabs: []
 --- !u!1 &48654305
 GameObject:
   m_ObjectHideFlags: 0
@@ -17433,6 +17534,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Locked: 0
+--- !u!114 &1086139954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2700874171910072507, guid: 330efb0e9eed825408809c121441b8a5, type: 3}
+  m_PrefabInstance: {fileID: 2700874170707504416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086139952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1bfe72fbc87d04e885296b53e91c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1091472005
 GameObject:
   m_ObjectHideFlags: 0

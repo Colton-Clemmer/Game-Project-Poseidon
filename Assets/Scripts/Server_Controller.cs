@@ -1,29 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Mirror;
 
 public class Server_Controller : MonoBehaviour
 {
-    public int ReliableChannelId;
-    public int UnreliableChannelId;
-    public int HostId;
+    public enum MessageType
+    {   
+        PlayerConnected = 50,
+        PlayerDisconnected = 51,
+        PlayerLocation = 52,
+        WelcomePlayer = 53
+    }
+
+    public class Client
+    {
+        public int connectionId;
+        public NetworkConnection Connection;
+        public GameObject Object;
+        public Vector3 Location;
+    }
+
+    public class LocationPacket : MessageBase
+    {
+        public int Id;
+        public Vector3 Location;
+    }
+
+    public class PlayerStatusPacket : MessageBase
+    {
+        public int connectionId;
+    }
+
+    public class PlayerWelcomePacket : MessageBase
+    {
+        public int ConnectionId;
+        public LocationPacket[] Players;
+    }
+
+    private NetworkManager_Server_Controller _networkManager
+    { get { return GetComponent<NetworkManager_Server_Controller>(); } }
+
+    private List<Client> _clients
+    { get { return _networkManager.Clients; } }
 
     void Start()
     {
-        // NetworkTransport.Init();
-        // var config = new ConnectionConfig();
-        // ReliableChannelId = config.AddChannel(QosType.Reliable);
-        // UnreliableChannelId = config.AddChannel(QosType.UnReliable);
-        // var topology = new HostTopology(config, 10);
-        // HostId = NetworkTransport.AddHost(topology, 8888);
-
-        // var server = new NetworkServer();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _networkManager.StartHost();
     }
 }
